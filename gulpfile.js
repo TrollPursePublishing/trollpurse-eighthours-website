@@ -8,6 +8,11 @@ gulp.task('cleanDest', function() {
 	return clean(['built/**/*']);
 });
 
+gulp.task('copyFavicon', function () {
+	return gulp.src(['html/favicon.ico'])
+		.pipe(gulp.dest('built/'));
+});
+
 gulp.task('minifyHTML', function() {
 	return gulp.src(['html/*.html'])
 		.pipe(minifyHTML({collapseWhitespace: true}))
@@ -36,7 +41,7 @@ gulp.task('minifyJS', function() {
 		.pipe(gulp.dest('built/js/'));
 });
 
-gulp.task('mini-copy', gulp.parallel('minifyHTML', 'minifyJS', 'minifyCSS', 'copyRobots'));
+gulp.task('mini-copy', gulp.parallel('minifyHTML', 'minifyJS', 'minifyCSS', 'copyRobots', 'copyFavicon'));
 
 gulp.task('build', gulp.series('cleanDest', 'mini-copy', function(done){
 	done();
