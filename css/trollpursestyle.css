@@ -97,3 +97,7 @@ button.btn:hover {
 a {
     color: #4e6172
 }
+
+nav>div>img.header-logo {
+    max-height: 4rem;
+}
